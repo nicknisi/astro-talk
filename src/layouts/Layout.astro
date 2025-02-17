@@ -4,24 +4,24 @@ import '../styles/global.css';
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body class="m-0 w-full h-full">
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro Basics</title>
+  </head>
+  <body class="m-0 h-full w-full">
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		background-color: #121212;
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    background-color: #121212;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>

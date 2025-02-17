@@ -3,16 +3,16 @@ import type { CollectionEntry } from 'astro:content';
 import Slide from './Slide.astro';
 
 interface Props {
-	slide: CollectionEntry<'slides'>;
+  slide: CollectionEntry<'slides'>;
 }
 
 const { slide } = Astro.props;
 ---
 
-<div class="w-64 aspect-video overflow-hidden border border-gray-700 rounded">
-	<div class="w-full relative">
-	<div class="transform scale-50 w-[200%] aspect-video origin-top-left">
-		<Slide slide={slide} />
-	</div>
-	</div>
+<div class="aspect-video w-64 overflow-hidden rounded border border-gray-700">
+  <div class="relative w-full">
+    <div class="aspect-video w-[200%] origin-top-left scale-50 transform">
+      <Slide slide={slide} />
+    </div>
+  </div>
 </div>

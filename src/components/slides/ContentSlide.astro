@@ -3,16 +3,16 @@ import { type CollectionEntry, render } from 'astro:content';
 import SlideLayout from './SlideLayout.astro';
 
 interface Props {
-	slide: CollectionEntry<'slides'>;
+  slide: CollectionEntry<'slides'>;
 }
 
 const { slide } = Astro.props;
-const {Content} = await render(slide);
+const { Content } = await render(slide);
 ---
 
 <SlideLayout>
-		<h2 class="text-3xl mb-4">{slide.data.title}</h2>
-		<article class="prose prose-invert max-w-none">
-			<Content/>
-		</article>
+  <h2 class="mb-4 text-3xl">{slide.data.title}</h2>
+  <article class="prose prose-invert max-w-none">
+    <Content />
+  </article>
 </SlideLayout>

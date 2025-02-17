@@ -5,15 +5,13 @@ import SlidePreview from '../components/slides/SlidePreview.astro';
 
 const slides = await getCollection('slides');
 slides.sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
-console.log('slides', slides.length, slides)
+console.log('slides', slides.length, slides);
 ---
 
 <Layout>
-	<div class="container mx-auto">
-		  <div class="grid grid-cols-3 gap-4">
-        {slides.map((slide) => (
-          <SlidePreview slide={slide} />
-        ))}
-      </div>
-	</div>
+  <div class="container mx-auto">
+    <div class="grid grid-cols-3 gap-4">
+      {slides.map(slide => <SlidePreview slide={slide} />)}
+    </div>
+  </div>
 </Layout>
