@@ -11,7 +11,7 @@ console.log('slides', slides.length, slides);
 <Layout>
   <div class="container mx-auto">
     <div class="grid grid-cols-3 gap-4">
-      {slides.map(slide => <SlidePreview slide={slide} />)}
+{slides.map((slide, index) => <div><a href=`/presentation/${index}`><SlidePreview slide={slide} /></a></div>)}
     </div>
   </div>
 </Layout>
