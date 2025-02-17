@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Slide from './Slide.astro';
+
+interface Props {
+	slide: CollectionEntry<'slides'>;
+}
+
+const { slide } = Astro.props;
+---
+
+<div class="w-64 aspect-video overflow-hidden border border-gray-700 rounded">
+	<div class="w-full relative">
+	<div class="transform scale-50 w-[200%] aspect-video origin-top-left">
+		<Slide slide={slide} />
+	</div>
+	</div>
+</div>

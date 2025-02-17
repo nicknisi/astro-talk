@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import Slide from '../components/slides/Slide.astro';
+import SlidePreview from '../components/slides/SlidePreview.astro';
 
 const slides = await getCollection('slides');
 slides.sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
@@ -10,6 +10,10 @@ console.log('slides', slides.length, slides)
 
 <Layout>
 	<div class="container mx-auto">
-		{slides.map(slide => <Slide slide={slide} />)}
+		  <div class="grid grid-cols-3 gap-4">
+        {slides.map((slide) => (
+          <SlidePreview slide={slide} />
+        ))}
+      </div>
 	</div>
 </Layout>
