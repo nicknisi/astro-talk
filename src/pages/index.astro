@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import SlidePreview from '../components/slides/SlidePreview.astro';
+import { fade } from 'astro:transitions';
 
 const slides = await getCollection('slides');
 slides.sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
@@ -9,9 +10,20 @@ console.log('slides', slides.length, slides);
 ---
 
 <Layout>
-  <div class="container mx-auto">
-    <div class="grid grid-cols-3 gap-4">
-{slides.map((slide, index) => <div><a href=`/presentation/${index}`><SlidePreview slide={slide} /></a></div>)}
+  <div class="container mx-auto p-12">
+    <div class="flex flex-wrap gap-6">
+      {
+        slides.map((slide, index) => {
+          const slideLink = `/presentation/${index}`;
+          return (
+            <div class="w-[calc(33.33%-1rem)] min-w-[300px] flex-grow" transition:name={slideLink} transition:animate={fade({ duration: 1 })}>
+              <a href={slideLink} class="block">
+                <SlidePreview slide={slide} />
+              </a>
+            </div>
+          );
+        })
+      }
     </div>
   </div>
 </Layout>
