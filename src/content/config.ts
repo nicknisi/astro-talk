@@ -4,8 +4,10 @@ const slides = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      type: z.enum(['title', 'content']),
+      subtitle: z.string().optional(),
+      type: z.enum(['title', 'content', 'image-content', 'image']),
       order: z.number().optional(),
+      hideContent: z.boolean().optional(),
       image: image().optional(),
     }),
 });

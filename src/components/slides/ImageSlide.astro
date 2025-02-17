@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  slide: CollectionEntry<'slides'>;
+}
+
+const { slide } = Astro.props;
+const { Content } = await slide.render();
+---
+
+<section class="relative aspect-video">
+  <img src={slide.data.image?.src} alt={slide.data.title} class="absolute inset-0 h-full w-full object-cover" />
+  {
+    !slide.data.hideContent && (
+      <div class="relative z-10 flex h-full flex-col items-center justify-center bg-[#121212] p-4 opacity-60">
+        <h2 class="mb-4 text-4xl text-white">{slide.data.title}</h2>
+        <article class="prose prose-invert">
+          <Content />
+        </article>
+      </div>
+    )
+  }
+</section>

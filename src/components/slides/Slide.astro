@@ -5,11 +5,23 @@ interface Props {
   slide: CollectionEntry<'slides'>;
 }
 
+async function getSlideType(slide: CollectionEntry<'slides'>) {
+  switch (slide.data.type) {
+    case 'title':
+      return (await import('./TitleSlide.astro')).default;
+    case 'content':
+      return (await import('./ContentSlide.astro')).default;
+    case 'image-content':
+      return (await import('./ImageContentSlide.astro')).default;
+    case 'image':
+      return (await import('./ImageSlide.astro')).default;
+    default:
+      throw new Error(`Unknown slide type: ${slide.data.type}`);
+  }
+}
+
 const { slide } = Astro.props;
-const SlideComponent =
-  slide.data.type === 'title'
-    ? (await import('./TitleSlide.astro')).default
-    : (await import('./ContentSlide.astro')).default;
+const SlideComponent = await getSlideType(slide);
 ---
 
 <SlideComponent slide={slide} />
