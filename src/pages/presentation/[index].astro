@@ -15,13 +15,22 @@ export async function getStaticPaths() {
 const slides = await getCollection('slides');
 slides.sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
 const currentIndex = parseInt(Astro.params.index, 10);
-const slide = slides[currentIndex];
+const currentSlide = slides[currentIndex];
 const prevIndex = currentIndex > 0 ? currentIndex - 1 : null;
 const nextIndex = currentIndex < slides.length - 1 ? currentIndex + 1 : null;
+
+// Get the previous page URL
+const referer = Astro.request.headers.get('referer') || ''; // "/" or "/presentation/#"
+const isFromHome = referer.endsWith('/');
+
+// const previousPageIndex = isFromHome ? null : parseInt(referer.split('/').pop() || '0', 10);
+// const slideDirection = previousPageIndex === null ? null : previousPageIndex < currentIndex ? 'left' : 'right';
+
+export const prerender = false; // so that we can check which transition is used
 ---
 
 <Layout>
-  <div class="absolute top-4 left-4">
+  <div class="absolute top-4 left-4 z-20">
     <a href="/" class="flex items-center gap-1 text-gray-300 transition-colors hover:underline">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -39,14 +48,14 @@ const nextIndex = currentIndex < slides.length - 1 ? currentIndex + 1 : null;
       Back to all slides
     </a>
   </div>
-  <div class="flex h-screen items-center justify-center">
+  <div class="z-10 flex h-screen items-center justify-center px-24 pt-24 pb-16">
     <div
       id="content"
       class="w-full"
       transition:name={`/presentation/${currentIndex}`}
-      transition:animate={fade({ duration: 1 })}
+      transition:animate={isFromHome ? fade({ duration: 1 }) : 'slide'}
     >
-      <Slide slide={slide} />
+      <Slide slide={currentSlide} />
       <div class="mt-4 flex justify-between">
         {
           prevIndex !== null ? (
