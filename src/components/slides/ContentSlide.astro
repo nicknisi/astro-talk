@@ -11,8 +11,11 @@ const { Content } = await render(slide);
 ---
 
 <SlideLayout>
-  <h2 class="mb-4 text-3xl">{slide.data.title}</h2>
-  <article class="prosep prose-2xl prose-invert max-w-none">
+  <div class="mb-8">
+    <h1 class="m-1 mt-0 mb-2 text-5xl">{slide.data.title}</h1>
+    {slide.data.subtitle && <h2 class="m-1 mt-0 mb-0 text-3xl">{slide.data.subtitle}</h2>}
+  </div>
+  <article class="prose prose-2xl prose-invert max-w-none">
     <Content />
   </article>
 </SlideLayout>

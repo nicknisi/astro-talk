@@ -15,8 +15,9 @@ const { Content } = await slide.render();
     <img src={image.src} class="h-full w-full object-cover" />
   </div>
   <div class="w-1/2 bg-gray-800 p-8">
-    <div class="prose prose-invert dark:prose-dark prose-2xl">
-      <h2 class="mb-4 text-3xl">{slide.data.title}</h2>
+    <div class="prose prose-invert dark:prose-dark prose-2xl mb-4 flex flex-col">
+      <h1 class="m-1 mt-0 mb-2 text-5xl">{slide.data.title}</h1>
+      {slide.data.subtitle && <h2 class="m-1 mt-0 mb-0 text-3xl">{slide.data.subtitle}</h2>}
       <article>
         <Content />
       </article>
