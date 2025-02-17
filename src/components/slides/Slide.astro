@@ -1,0 +1,12 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	slide: CollectionEntry<'slides'>;
+}
+
+const { slide } = Astro.props;
+const SlideComponent = slide.data.type === 'title' ? (await import('./TitleSlide.astro')).default : (await import('./ContentSlide.astro')).default;
+---
+
+<SlideComponent slide={slide} />

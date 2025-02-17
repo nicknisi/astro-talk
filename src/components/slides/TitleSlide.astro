@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import SlideLayout from './SlideLayout.astro';
+
+interface Props {
+	slide: CollectionEntry<'slides'>;
+}
+
+const { slide } = Astro.props;
+---
+
+<SlideLayout>
+	<section class="flex items-center justify-center h-screen bg-blue-500">
+		<h1 class="text-6xl font-bold">{slide.data.title}</h1>
+	</section>
+</SlideLayout>

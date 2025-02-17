@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import PresentationLayout from '../../layouts/PresentationLayout.astro';
+
+
+export async function getStaticPaths() {
+	const slides = await getCollection('slides');
+
+	return slides.map(slide => ({
+		params: { slug: slide.slug,},
+		props: { slide}
+	}));
+}
+
+const { slide } = Astro.props;
+const { Content } = await slide.render();
+---
+
+<PresentationLayout>
+  {slide.data.layout === 'title' && (
+    <TitleSlide 
+      title={slide.data.title} 
+      client:load
+    />
+  )}
+  <!-- Add other layout conditions -->
+</PresentationLayout>

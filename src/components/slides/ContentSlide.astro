@@ -1,0 +1,20 @@
+---
+import { type CollectionEntry, render } from 'astro:content';
+import SlideLayout from './SlideLayout.astro';
+
+interface Props {
+	slide: CollectionEntry<'slides'>;
+}
+
+const { slide } = Astro.props;
+const {Content} = await render(slide);
+---
+
+<SlideLayout>
+	<section class="p-8 min-h-screen bg-gray-800">
+		<h2 class="text-3xl mb-4">{slide.data.title}</h2>
+		<article class="prose prose-invert max-w-none">
+			<Content/>
+		</article>
+	</section>
+</SlideLayout>

@@ -1,0 +1,80 @@
+---
+import { getCollection } from "astro:content";
+import { Icon  } from 'astro-icon/components';
+
+const allSlides = await getCollection('slides');
+const sortedSlides = allSlides.sort((a, b) => a.data.order - b.data.order);
+
+const currentPath = Astro.url.pathname;
+const currentIndex = sortedSlides.findIndex(slide => slide.slug === currentPath.split('/').pop());
+
+const previousSlide = currentIndex > 0 ? sortedSlides[currentIndex - 1] : null;
+const nextSlide = currentIndex < sortedSlides.length - 1 ? sortedSlides[currentIndex + 1] : null;
+---
+
+<div class="relative min-h-screen bg-black">
+  <!-- Main content -->
+  <main class="relative">
+    <slot />
+  </main>
+
+  <!-- Navigation UI -->
+  <nav class="fixed bottom-4 left-0 right-0 flex justify-between items-center px-6">
+    <div class="flex items-center gap-4">
+      <!-- Progress indicator -->
+      <span class="text-white text-sm">
+        {currentIndex + 1} / {sortedSlides.length}
+      </span>
+    </div>
+
+    <!-- Navigation buttons -->
+    <div class="flex gap-2">
+      {previousSlide && (
+        <a
+          href={`/presentation/${previousSlide.slug}`}
+          class="p-2 rounded-full bg-gray-800 text-white hover:bg-gray-700 transition-colors"
+          aria-label="Previous slide"
+        >
+          <Icon name="mdi:ChevronLeft" class="w-6 h-6" />
+        </a>
+      )}
+      {nextSlide && (
+        <a
+          href={`/presentation/${nextSlide.slug}`}
+          class="p-2 rounded-full bg-gray-800 text-white hover:bg-gray-700 transition-colors"
+          aria-label="Next slide"
+        >
+          <Icon name="mdi:ChevronRight" class="w-6 h-6" />
+        </a>
+      )}
+    </div>
+  </nav>
+</div>
+
+<!-- Keyboard navigation script -->
+<script>
+  function handleKeydown(event: KeyboardEvent) {
+    const links = document.querySelectorAll('nav a');
+    const prevLink = links[0] as HTMLAnchorElement | undefined;
+    const nextLink = links[1] as HTMLAnchorElement | undefined;
+
+    switch (event.key) {
+      case 'ArrowLeft':
+      case 'PageUp':
+        if (prevLink) {
+          prevLink.click();
+        }
+        break;
+      case 'ArrowRight':
+      case 'PageDown':
+      case ' ':
+        if (nextLink) {
+          nextLink.click();
+        }
+        break;
+    }
+  }
+
+  // Add keyboard event listener
+  document.addEventListener('keydown', handleKeydown);
+</script>
