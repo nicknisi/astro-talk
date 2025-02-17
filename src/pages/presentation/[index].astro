@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Slide from '../../components/slides/Slide.astro';
+
+export async function getStaticPaths() {
+  const slides = await getCollection('slides');
+  slides.sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+  return slides.map((_, index) => ({
+    params: { index: index.toString(), },
+  }));
+}
+
+const slides = await getCollection('slides');
+slides.sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+const currentIndex = parseInt(Astro.params.index, 10);
+const slide = slides[currentIndex];
+const prevIndex = currentIndex > 0 ? currentIndex - 1 : null;
+const nextIndex = currentIndex < slides.length - 1 ? currentIndex + 1 : null;
+---
+
+<Layout>
+  <div class="h-screen flex justify-center items-center">
+    <div id="content" class="w-full">
+      <Slide slide={slide} />
+      <div class="flex justify-between mt-4">
+        {prevIndex !== null ? (
+          <a class="transition-link text-blue-400" href={`/presentation/${prevIndex}`}>Previous</a>
+        ) : <div></div>}
+        {nextIndex !== null ? (
+          <a class="transition-link text-blue-400" href={`/presentation/${nextIndex}`}>Next</a>
+        ) : <div></div>}
+      </div>
+    </div>
+  </div>
+</Layout>
