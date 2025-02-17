@@ -59,7 +59,7 @@ export const prerender = false; // so that we can check which transition is used
       <div class="mt-4 flex justify-between">
         {
           prevIndex !== null ? (
-            <a class="transition-link text-blue-400" href={`/presentation/${prevIndex}`}>
+            <a id="prev-slide" class="transition-link text-blue-400" href={`/presentation/${prevIndex}`}>
               Previous
             </a>
           ) : (
@@ -68,7 +68,7 @@ export const prerender = false; // so that we can check which transition is used
         }
         {
           nextIndex !== null ? (
-            <a class="transition-link text-blue-400" href={`/presentation/${nextIndex}`}>
+            <a id="next-slide" class="transition-link text-blue-400" href={`/presentation/${nextIndex}`}>
               Next
             </a>
           ) : (
@@ -79,3 +79,14 @@ export const prerender = false; // so that we can check which transition is used
     </div>
   </div>
 </Layout>
+<script>
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') {
+      const prevLink = document.getElementById('prev-slide') as HTMLAnchorElement;
+      if (prevLink) prevLink.click();
+    } else if (e.key === 'ArrowRight') {
+      const nextLink = document.getElementById('next-slide') as HTMLAnchorElement;
+      if (nextLink) nextLink.click();
+    }
+  });
+</script>
