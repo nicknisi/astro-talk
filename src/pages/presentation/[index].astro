@@ -31,7 +31,7 @@ export const prerender = false; // so that we can check which transition is used
 
 <Layout>
   <div class="absolute top-4 left-4 z-20">
-    <a href="/" class="flex items-center gap-1 text-gray-300 transition-colors hover:underline">
+    <a id="home-link" href="/" class="flex items-center gap-1 text-gray-300 transition-colors hover:underline">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
@@ -81,12 +81,17 @@ export const prerender = false; // so that we can check which transition is used
 </Layout>
 <script>
   document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowLeft') {
-      const prevLink = document.getElementById('prev-slide') as HTMLAnchorElement;
-      if (prevLink) prevLink.click();
-    } else if (e.key === 'ArrowRight') {
-      const nextLink = document.getElementById('next-slide') as HTMLAnchorElement;
-      if (nextLink) nextLink.click();
+    console.log('KEY', e.key);
+    switch (e.key) {
+      case 'Escape':
+        (document.getElementById('home-link') as HTMLAnchorElement)?.click();
+        break;
+      case 'ArrowLeft':
+        (document.getElementById('prev-slide') as HTMLAnchorElement)?.click();
+        break;
+      case 'ArrowRight':
+        (document.getElementById('next-slide') as HTMLAnchorElement)?.click();
+        break;
     }
   });
 </script>
