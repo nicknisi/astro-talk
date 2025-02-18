@@ -1,0 +1,17 @@
+---
+layout: '@/layouts/DemoLayout.astro'
+---
+
+import ReactDemo from '@/components/react/ReactDemo.tsx';
+import SvelteDemo from '@/components/svelte/SvelteDemo.svelte';
+import ReactDemoCode from '@/components/react/ReactDemo.tsx?raw';
+import SvelteDemoCode from '@/components/svelte/SvelteDemo.svelte?raw';
+import { Code } from 'astro:components';
+
+<div class="flex gap-8">
+  <ReactDemo client:load />
+  <SvelteDemo client:load />
+</div>
+
+<Code lang="astro" code={ReactDemoCode} />
+<Code lang="astro" code={SvelteDemoCode} />

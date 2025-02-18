@@ -1,0 +1,10 @@
+---
+layout: '@/layouts/DemoLayout.astro'
+---
+
+import SvelteDemo from '@/components/svelte/SvelteDemo.svelte';
+import SvelteDemoCode from '@/components/svelte/SvelteDemo.svelte?raw';
+import { Code } from 'astro:components';
+
+<SvelteDemo client:load />
+<Code lang="svelte" code={SvelteDemoCode} />

@@ -1,0 +1,11 @@
+---
+layout: '@/layouts/DemoLayout.astro'
+---
+
+import ReactDemo from '@/components/react/ReactDemo.tsx';
+import ReactDemoCode from '@/components/react/ReactDemo.tsx?raw';
+import { Code } from 'astro:components';
+
+<ReactDemo client:load />
+
+<Code lang="tsx" code={ReactDemoCode} />
