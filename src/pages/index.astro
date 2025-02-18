@@ -19,12 +19,12 @@ slides.sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
           const slideLink = `/presentation/${index}`;
           return (
             <div transition:name={slideLink} transition:animate={fade({ duration: 1 })}>
-              <a
-                href={slideLink}
-                class="block transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+              <button
+                onclick={`window.location.href='${slideLink}'`}
+                class="block cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]"
               >
                 <SlidePreview slide={slide} />
-              </a>
+              </button>
             </div>
           );
         })
