@@ -40,3 +40,75 @@ slides.sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
     </div>
   </div>
 </Layout>
+
+<script>
+  // Get all slide preview buttons
+  const slideButtons = document.querySelectorAll('button[onclick^="window.location.href=\'/presentation/"]');
+  let currentFocusIndex = -1;
+  let cardsPerRow = 1;
+
+  // Function to calculate cards per row
+  const calculateCardsPerRow = () => {
+    if (slideButtons.length === 0) return 1;
+    
+    const firstCard = slideButtons[0].getBoundingClientRect();
+    const containerWidth = firstCard.width * 1.5; // Account for gap
+    const viewportWidth = window.innerWidth;
+    return Math.max(1, Math.floor(viewportWidth / containerWidth));
+  };
+
+  // Calculate initial cards per row
+  cardsPerRow = calculateCardsPerRow();
+
+  // Update cards per row on window resize
+  window.addEventListener('resize', () => {
+    cardsPerRow = calculateCardsPerRow();
+  });
+
+  // Add keyboard navigation
+  document.addEventListener('keydown', e => {
+    // Only handle arrow keys
+    if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
+      return;
+    }
+
+    e.preventDefault();
+
+    // Initialize focus if none exists
+    if (currentFocusIndex === -1) {
+      currentFocusIndex = 0;
+      (slideButtons[0] as HTMLButtonElement)?.focus();
+      return;
+    }
+
+    const totalSlides = slideButtons.length;
+    let newIndex = currentFocusIndex;
+
+    switch (e.key) {
+      case 'ArrowRight':
+        newIndex = Math.min(currentFocusIndex + 1, totalSlides - 1);
+        break;
+      case 'ArrowLeft':
+        newIndex = Math.max(currentFocusIndex - 1, 0);
+        break;
+      case 'ArrowDown':
+        newIndex = Math.min(currentFocusIndex + cardsPerRow, totalSlides - 1);
+        break;
+      case 'ArrowUp':
+        newIndex = Math.max(currentFocusIndex - cardsPerRow, 0);
+        break;
+    }
+
+    if (newIndex !== currentFocusIndex) {
+      currentFocusIndex = newIndex;
+      (slideButtons[currentFocusIndex] as HTMLButtonElement)?.focus();
+    }
+  });
+
+  // Handle focus events to track current index
+  slideButtons.forEach((button, index) => {
+    button.addEventListener('focus', () => {
+      currentFocusIndex = index;
+    });
+  });
+</script>
