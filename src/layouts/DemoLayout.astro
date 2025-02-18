@@ -1,0 +1,11 @@
+---
+import Layout from './Layout.astro';
+import BackButton from '@/components/BackButton.astro';
+---
+
+<Layout>
+  <BackButton />
+  <div class="container mx-auto flex flex-col items-center justify-center p-12 pt-24 text-white">
+    <slot />
+  </div>
+</Layout>
