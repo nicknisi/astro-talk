@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Slide from '../../components/slides/Slide.astro';
-import { fade } from 'astro:transitions';
+import { fade, slide } from 'astro:transitions';
 import BackButton from '@/components/BackButton.astro';
 
 export async function getStaticPaths() {
@@ -72,13 +72,28 @@ export const prerender = false; // so that we can check which transition is used
   <div class="z-10 flex h-screen flex-col items-center justify-center px-24 pt-24 pb-16">
     <div
       id="content"
-      class="w-full"
+      class="animate-zoom w-full"
       transition:name={`/presentation/${currentIndex}`}
-      transition:animate={isFromHome ? fade({ duration: 1 }) : 'slide'}
-      style="transform-origin: center; transition: transform 0.3s ease;"
+      transition:animate={isFromHome ? fade({ duration: '1s' }) : slide({ duration: '0.5s' })}
+      style="transform-origin: center;"
     >
       <Slide slide={currentSlide} />
     </div>
+
+    <style>
+      @keyframes zoom {
+        0% {
+          transform: scale(0.5);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .animate-zoom {
+        animation: zoom 0.2s ease-out forwards;
+      }
+    </style>
     <div class="relative z-30 my-4 flex w-full items-center justify-between">
       {
         prevIndex !== null ? (
