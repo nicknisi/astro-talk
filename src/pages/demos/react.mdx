@@ -8,4 +8,8 @@ import { Code } from 'astro:components';
 
 <ReactDemo client:load />
 
+<a href={`vscode://file/${process.cwd()}/src/pages/demos/react.mdx`} className="text-blue-400 hover:text-blue-300">
+  Open in VS Code
+</a>
+
 <Code lang="tsx" code={ReactDemoCode} />

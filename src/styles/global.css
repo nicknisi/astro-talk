@@ -5,3 +5,16 @@ html,
 body {
   @apply m-0 h-full w-full bg-[#121212];
 }
+
+@keyframes zoom {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-zoom {
+  animation: zoom 0.2s ease-out forwards;
+}

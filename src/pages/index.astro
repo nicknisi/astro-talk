@@ -50,9 +50,9 @@ slides.sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
   // Function to calculate cards per row
   const calculateCardsPerRow = () => {
     if (slideButtons.length === 0) return 1;
-    
+
     const firstCard = slideButtons[0].getBoundingClientRect();
-    const containerWidth = firstCard.width * 1.5; // Account for gap
+    const containerWidth = firstCard.width * 1.2; // Account for gap
     const viewportWidth = window.innerWidth;
     return Math.max(1, Math.floor(viewportWidth / containerWidth));
   };

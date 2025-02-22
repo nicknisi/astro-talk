@@ -6,5 +6,9 @@ import SvelteDemo from '@/components/svelte/SvelteDemo.svelte';
 import SvelteDemoCode from '@/components/svelte/SvelteDemo.svelte?raw';
 import { Code } from 'astro:components';
 
+<a href={`vscode://file/${process.cwd()}/src/pages/demos/svelte.mdx`} className="text-blue-400 hover:text-blue-300">
+  Open in VS Code
+</a>
+
 <SvelteDemo client:load />
 <Code lang="svelte" code={SvelteDemoCode} />

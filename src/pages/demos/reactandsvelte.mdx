@@ -8,10 +8,19 @@ import ReactDemoCode from '@/components/react/ReactDemo.tsx?raw';
 import SvelteDemoCode from '@/components/svelte/SvelteDemo.svelte?raw';
 import { Code } from 'astro:components';
 
+{/* Demo hydration */}
+
 <div class="flex gap-8">
-  <ReactDemo client:load />
-  <SvelteDemo client:load />
+  <ReactDemo />
+  <SvelteDemo />
 </div>
+
+<a
+  href={`vscode://file/${process.cwd()}/src/pages/demos/reactandsvelte.mdx`}
+  className="text-blue-400 hover:text-blue-300"
+>
+  Open in VS Code
+</a>
 
 <Code lang="astro" code={ReactDemoCode} />
 <Code lang="astro" code={SvelteDemoCode} />

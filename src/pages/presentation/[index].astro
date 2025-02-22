@@ -79,21 +79,6 @@ export const prerender = false; // so that we can check which transition is used
     >
       <Slide slide={currentSlide} />
     </div>
-
-    <style>
-      @keyframes zoom {
-        0% {
-          transform: scale(0.5);
-        }
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      .animate-zoom {
-        animation: zoom 0.2s ease-out forwards;
-      }
-    </style>
     <div class="relative z-30 my-4 flex w-full items-center justify-between">
       {
         prevIndex !== null ? (
