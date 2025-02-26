@@ -1,0 +1,89 @@
+---
+
+---
+
+<div class="mx-auto max-w-md rounded-lg bg-white p-6 shadow-md">
+  <div class="mb-4">
+    <label for="queryInput" class="mb-1 block text-sm font-medium text-gray-700">What are you safe from?</label>
+    <input
+      type="text"
+      id="queryInput"
+      placeholder="I'm safe from..."
+      class="w-full rounded-md border p-2 text-gray-900 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+    />
+  </div>
+
+  <div class="mb-6">
+    <button
+      id="submitButton"
+      class="w-full rounded-md bg-blue-500 px-4 py-2 text-white transition-colors hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:outline-none"
+    >
+      Load Image
+    </button>
+  </div>
+
+  <div class="mt-4">
+    <div
+      id="imageContainer"
+      class="flex h-96 w-full items-center justify-center overflow-hidden rounded-md bg-gray-100"
+    >
+      <p class="text-gray-500">Image will appear here</p>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  const queryInput = document.getElementById('queryInput');
+  const submitButton = document.getElementById('submitButton');
+  const imageContainer = document.getElementById('imageContainer');
+
+  // Replace this with your actual image API URL
+  const baseImageUrl = '/endpoint.png';
+
+  // Function to reset the image container
+  const resetImageContainer = () => {
+    imageContainer.innerHTML = '<p class="text-gray-500">Image will appear here</p>';
+  };
+
+  submitButton.addEventListener('click', () => {
+    const queryText = queryInput.value.trim();
+    const params = new URLSearchParams();
+
+    if (queryText !== '') {
+      params.set('title', queryText);
+    }
+
+    // Create the URL with the query parameter
+    const imageUrl = `${baseImageUrl}?${params.toString()}`;
+
+    // Clear the current content of the image container
+    imageContainer.innerHTML = '<div class="animate-pulse w-full h-full bg-gray-200"></div>';
+
+    // Create and add the image element
+    const imageElement = new Image();
+
+    // Set up event handlers
+    imageElement.onload = () => {
+      imageContainer.innerHTML = '';
+      imageElement.className = 'w-full h-full object-contain';
+      imageContainer.appendChild(imageElement);
+    };
+
+    imageElement.onerror = () => {
+      resetImageContainer();
+    };
+
+    // Set the source to trigger loading
+    imageElement.src = imageUrl;
+    imageElement.alt = `Image for query: ${queryText}`;
+    imageElement.width = 618;
+    imageElement.height = 499;
+  });
+
+  // Allow pressing Enter key in the input field to submit
+  queryInput.addEventListener('keypress', event => {
+    if (event.key === 'Enter') {
+      submitButton.click();
+    }
+  });
+</script>

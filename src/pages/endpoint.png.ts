@@ -15,8 +15,7 @@ export const GET: APIRoute = async ({ url }) => {
   const markedSafe = `data:image/png;base64,${Buffer.from(markedSafeImage).toString('base64')}`;
 
   let background: Record<string, unknown> = {
-    backgroundImage: 'linear-gradient(to bottom, #11181C, #0b1215)',
-    backgroundColor: '#0b1215',
+    backgroundColor: '#ffffff',
   };
 
   const width = 618;
@@ -37,7 +36,7 @@ export const GET: APIRoute = async ({ url }) => {
                   style: {
                     backgroundImage: `url('${markedSafe}')`,
                     backgroundRepeat: 'no-repeat',
-                    backgroundColor: '#Ob1215',
+                    backgroundColor: '#ffffff',
                     backgroundSize: '100% 100%',
                     width: `${width}px`,
                     height: `${height}px`,

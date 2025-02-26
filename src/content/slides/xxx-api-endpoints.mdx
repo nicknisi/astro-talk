@@ -1,0 +1,53 @@
+---
+title: 'API Endpoints in Astro'
+type: 'content'
+order: 99
+---
+
+import EndpointDemo from '@/components/EndpointDemo.astro';
+
+<div class="flex gap-6">
+  <div class="shrink">
+  - Custom server routes that serve **any** kind of data
+  - Use cases include generating images, exposing RSS, standard API Routes
+  - Can be accessed from both client and server components
+  - Support for all HTTP methods (`GET`, `POST`, `PUT`, `DELETE`, etc.)
+  - Can be used for form submissions, authentication, etc.
+  <div>
+    <EndpointDemo/>
+  </div>
+  </div>
+
+  <div class="flex-1">
+    ```ts
+// File: src/pages/endpoint.png.ts
+export const GET: APIRoute = async ({ url }) => {
+  const params = url.searchParams;
+  const title = params.get('title') ?? 'Next.js';
+  const markedSafe = `data:image/png;base64,${Buffer.from(markedSafeImage).toString('base64')}`;
+  const node: ReactNode = {
+     // generate the image...
+  } as ReactNode;
+  const svg = await satori(node, {
+    width,
+    height,
+    fonts: [
+      {
+        data: Buffer.from(dmSansBoldData),
+        name: 'DM Sans Bold',
+        style: 'normal',
+      },
+    ],
+  });
+
+  const png = await sharp(Buffer.from(svg)).png().toBuffer();
+
+  return new Response(png, {
+      headers: {
+        'Content-Type': 'image/png',
+      },
+    });
+};
+```
+  </div>
+</div>
