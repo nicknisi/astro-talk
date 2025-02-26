@@ -1,5 +1,7 @@
 <script>
   let count = $state(0);
+
+  console.log('SvelteDemo ran');
 </script>
 
 <div class="flex flex-col items-center gap-8 p-8 bg-white rounded-lg shadow-lg max-w-md mx-auto">

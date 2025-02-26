@@ -8,12 +8,30 @@ import ReactDemoCode from '@/components/react/ReactDemo.tsx?raw';
 import SvelteDemoCode from '@/components/svelte/SvelteDemo.svelte?raw';
 import { Code } from 'astro:components';
 
-{/* Demo hydration */}
-
 <div class="flex gap-8">
   <ReactDemo />
   <SvelteDemo />
 </div>
+
+{/* <div class="flex gap-8">
+  <ReactDemo client:load />
+  <SvelteDemo client:load />
+</div> */}
+
+{/* <div class="flex gap-8">
+  <ReactDemo client:idle />
+  <SvelteDemo client:idle />
+</div> */}
+
+{/* <div class="flex flex-col gap-300">
+  <ReactDemo client:visible />
+  <SvelteDemo client:visible />
+</div> */}
+
+{/* <div class="flex gap-8">
+  <ReactDemo client:media="(max-width: 768px)" />
+  <SvelteDemo client:media="(min-width: 768px)" />
+</div> */}
 
 <a
   href={`vscode://file/${process.cwd()}/src/pages/demos/reactandsvelte.mdx`}
