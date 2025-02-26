@@ -11,3 +11,4 @@ image: '@/assets/islands.jpg'
 - Framework-agnostic components
 - Automatic HTML pre-rendering
 - Selective hydration for better performance
+- Lazy-loading parts of your page as needed with Server Islands
