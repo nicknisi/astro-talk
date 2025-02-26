@@ -9,3 +9,7 @@ order: 5
 - **Zero-Config Performance** - Engineered to deliver blazing-fast sites out of the box
 - **Developer-Friendly** - Intuitive design that welcomes both beginners and experts
 - **Extensible Ecosystem** - Rich marketplace of integrations and plugins to extend functionality
+
+### Our Hot Take
+
+> If you are building a website that would benefit from any of the above qualities, Astro should be your default choice.

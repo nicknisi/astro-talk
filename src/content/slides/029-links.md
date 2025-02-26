@@ -1,7 +1,7 @@
 ---
 title: 'Links'
 type: 'image-content'
-order: 99
+order: 29
 image: '@/assets/qr.png'
 ---
 

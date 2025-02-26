@@ -1,7 +1,7 @@
 ---
 title: 'Shoutouts'
 type: 'content'
-order: 98
+order: 28
 ---
 
 - Epic Web Conf (Utah): [https://www.epicweb.dev/conf/2025](https://www.epicweb.dev/conf/2025)
