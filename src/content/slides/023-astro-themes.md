@@ -1,7 +1,7 @@
 ---
 title: 'Themes and Starter Kits'
 type: 'content'
-order: 99
+order: 23
 ---
 
 

@@ -1,7 +1,7 @@
 ---
 title: 'A Review of Data Fetching Strategies'
 type: 'content'
-order: 16
+order: 26
 ---
 
 - SSG (Static Site Generation)

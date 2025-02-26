@@ -2,7 +2,7 @@
 title: 'Server Islands'
 type: 'image-content'
 image: '@/assets/server-island-component.png'
-order: 99
+order: 21
 ---
 
 - Extend Astro's islands architecture to server-side rendering

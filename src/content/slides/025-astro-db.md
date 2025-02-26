@@ -1,7 +1,7 @@
 ---
 title: 'Astro DB'
 type: 'content'
-order: 99
+order: 25
 ---
 
 - Fully-managed SQL database designed exclusively for Astro projects 

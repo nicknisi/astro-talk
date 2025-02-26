@@ -1,7 +1,7 @@
 ---
 title: 'Inline Scripts'
 type: 'content'
-order: 99
+order: 10
 ---
 
 <div class="flex gap-6">

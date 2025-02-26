@@ -2,7 +2,7 @@
 title: 'View Transitions'
 subtitle: '(Client Router)'
 type: 'content'
-order: 99
+order: 22
 ---
 
 - Enables smooth, animated page transitions between routes without full page refreshes

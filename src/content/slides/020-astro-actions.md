@@ -1,7 +1,7 @@
 ---
 title: 'Astro Actions'
 type: 'content'
-order: 99
+order: 20
 ---
 
 ### Like endpoints, but types shared between front end and back end

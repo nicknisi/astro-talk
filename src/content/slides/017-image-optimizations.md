@@ -3,7 +3,8 @@ title: 'Astro Images'
 subtitle: 'Optimizing Images in Astro'
 type: 'image-content'
 image: '@/assets/astro-lanyard.webp'
-order: 99
+order: 17
+
 ---
 
 

@@ -1,7 +1,7 @@
 ---
 title: 'Astro with a CMS'
 type: 'image-content'
-order: 99
+order: 24
 image: '@/assets/cms.png'
 ---
 

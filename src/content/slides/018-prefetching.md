@@ -1,7 +1,7 @@
 ---
 title: 'Prefetching'
 type: 'content'
-order: 99
+order: 18
 ---
 
 - Enhances navigation speed by preloading linked pages before users click

@@ -3,7 +3,7 @@ title: 'Frameworks'
 subtitle: 'Astro can also render components written in other frameworks'
 type: 'image-content'
 image: '@/assets/frameworks.jpg'
-order: 10
+order: 11
 ---
 
 ```bash

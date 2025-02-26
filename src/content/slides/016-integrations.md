@@ -2,7 +2,7 @@
 title: 'Integrations'
 subtitle: 'Supercharge You Development'
 type: 'content'
-order: 12
+order: 16
 ---
 
 Astro offers a powerful ecosystem of built-in integrations to enhance your project capabilities:
