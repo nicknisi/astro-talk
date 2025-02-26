@@ -12,6 +12,10 @@ export default defineConfig({
     plugins: [tailwindcss(), rawBuffer()],
   },
 
+  image: {
+    domains: ['img.youtube.com', 'vimeo.com'],
+  },
+
   integrations: [icon(), react(), svelte(), mdx()],
   markdown: {
     shikiConfig: {
@@ -42,4 +46,3 @@ function rawBuffer() {
     },
   };
 }
-
